@@ -9,6 +9,8 @@
 #include maps/mp/zombies/_zm_stats;
 #include maps/mp/zombies/_zm_net;
 
+// Made By ZECxR3ap3r
+
 main() {
 	replacefunc(::give_perk, ::give_perk_cwz);
 }
@@ -27,7 +29,7 @@ onPlayerConnect() {
     	for(;;){
        		level waittill("connected", player);
         	player thread onPlayerSpawned();
-    }
+    	}
 }
 
 onPlayerSpawned() {
@@ -60,6 +62,14 @@ give_perk_cwz( perk, bought ) {
 	if ( perk == "specialty_scavenger" ) {
 		self.HasPerkSpecialtyTombstone = true;
 	}
+	if ( perk == "specialty_grenadepulldeath" ) {
+        	self thread maps/mp/zombies/_zm_perk_electric_cherry::electric_cherry_reload_attack();
+    	}
+    	if ( perk == "specialty_finalstand" ) {
+        	self.lives = 1;
+        	self.hasperkspecialtychugabud = 1;
+        	self notify( "perk_chugabud_activated" );
+    	}
 	players = GET_PLAYERS();
 	if ( use_solo_revive() && perk == "specialty_quickrevive" ) {
 		self.lives = 1;
@@ -154,5 +164,3 @@ PlayerDownedWatcher() {
 		self notify( "stop_electric_cherry_reload_attack" );
 	}
 }
-
-
