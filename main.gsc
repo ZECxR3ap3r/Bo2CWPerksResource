@@ -9,8 +9,6 @@
 #include maps/mp/zombies/_zm_stats;
 #include maps/mp/zombies/_zm_net;
 
-// Made By ZECxR3ap3r
-
 main() {
 	replacefunc(::give_perk, ::give_perk_cwz);
 }
