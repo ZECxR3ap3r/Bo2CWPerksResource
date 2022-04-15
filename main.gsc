@@ -70,6 +70,14 @@ give_perk_cwz( perk, bought ) {
         	self.hasperkspecialtychugabud = 1;
         	self notify( "perk_chugabud_activated" );
     	}
+	if ( isDefined( level._custom_perks[ perk ] ) && isDefined( level._custom_perks[ perk ].player_thread_give ) ) {
+		self thread [[ level._custom_perks[ perk ].player_thread_give ]]();
+	}
+	maps/mp/_demo::bookmark( "zm_player_perk", getTime(), self );
+	self maps/mp/zombies/_zm_stats::increment_client_stat( "perks_drank" );
+	self maps/mp/zombies/_zm_stats::increment_client_stat( perk + "_drank" );
+	self maps/mp/zombies/_zm_stats::increment_player_stat( perk + "_drank" );
+	self maps/mp/zombies/_zm_stats::increment_player_stat( "perks_drank" );
 	players = GET_PLAYERS();
 	if ( use_solo_revive() && perk == "specialty_quickrevive" ) {
 		self.lives = 1;
