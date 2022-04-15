@@ -1,4 +1,4 @@
-# Bo2CWPerksResource
+# Bo2 Cold War Perks Hud [Resource]
 
 ## Made By ZECxR3ap3r
 
