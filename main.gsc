@@ -19,27 +19,27 @@ init() {
 	precacheShader("specialty_vulture_zombies");
 	precacheshader("minimap_icon_chugabud");
 	precacheshader("minimap_icon_electric_cherry");
-    level thread onPlayerConnect();
+    	level thread onPlayerConnect();
 }
 
 onPlayerConnect() {
 	level endon("end_game");
-    for(;;){
-        level waittill("connected", player);
-        player thread onPlayerSpawned();
+    	for(;;){
+       		level waittill("connected", player);
+        	player thread onPlayerSpawned();
     }
 }
 
 onPlayerSpawned() {
-    self endon("disconnect");
+    	self endon("disconnect");
 	level endon("end_game");
-    for(;;) {
-        self waittill("spawned_player");
+    	for(;;) {
+        	self waittill("spawned_player");
 		if(!isdefined(self.initial_spawn)) {
 			self.initial_spawn = 1;
 			self thread PlayerDownedWatcher();
 		}
-    }
+    	}
 }
 
 give_perk_cwz( perk, bought ) {
@@ -148,9 +148,9 @@ PlayerDownedWatcher() {
 	while(1) {
 		self waittill("player_downed");
 		foreach(hud in self.perk_hud) {
-    		self.perk_hud = [];
-    		hud destroy();
-    	}
+    			self.perk_hud = [];
+    			hud destroy();
+    		}
 		self notify( "stop_electric_cherry_reload_attack" );
 	}
 }
