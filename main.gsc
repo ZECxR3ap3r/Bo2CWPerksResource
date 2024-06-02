@@ -177,6 +177,7 @@ PlayerDownedWatcher() {
 		self waittill("player_downed");
 		foreach(hud in self.perk_hud) {
     			self.perk_hud = [];
+			self.perk_hud_array = [];
     			hud destroy();
     		}
 		self notify( "stop_electric_cherry_reload_attack" );
