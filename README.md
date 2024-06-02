@@ -7,7 +7,6 @@
 
 ## Information
 - it works as it should, but the known problems are
-  - First Perk is not fully in Center
   - it can Happen that some perks may not Work Correctly
 
 ## How to Use
