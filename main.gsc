@@ -150,14 +150,23 @@ perk_hud_create( perk ) {
     hud.alignY = "bottom";
     hud.horzAlign = "user_center";
     hud.vertAlign = "user_bottom";
-    hud.x = self.perk_hud.size * 17.5;
-    hud.y = hud.y - 40;
+    hud.x = 0;
+    
+    if(self.perk_hud_array.size > 0)
+        hud.x = self.perk_hud_array[ self.perk_hud_array.size - 1].x + 28;
+
+    hud.y = hud.y - 10;
     hud.alpha = 1;
     hud SetShader( shader, 24, 24 );
+
+    hud.archived = 0;
     
     self.perk_hud[ perk ] = hud;
-    foreach(hud in self.perk_hud) {// Move Perks
-    	hud.x -= 9;
+    self.perk_hud_array[ self.perk_hud_array.size ] = hud;
+    
+    if(self.perk_hud.size > 1) {
+        foreach(hud in self.perk_hud_array) 
+            hud.x -= 14;
     }
 }
 
