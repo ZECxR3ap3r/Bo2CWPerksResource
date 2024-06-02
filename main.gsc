@@ -40,6 +40,7 @@ onPlayerSpawned() {
 		if(!isdefined(self.initial_spawn)) {
 			self.initial_spawn = 1;
 			self thread PlayerDownedWatcher();
+			self.perk_hud_array = [];
 		}
     	}
 }
